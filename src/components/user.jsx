@@ -14,8 +14,8 @@ const User = (props) => {
             <td>{props.profession.name}</td>
             <td>{props.completedMeetings}</td>
             <td>{props.rate}</td>
-            <td><button type="button" className="btn" onClick={() => props.onHandleBoomark(props._id)}><i className={"bi " + (props.bookmark ? "bi-bookmark-plus-fill" : "bi-bookmark")}></i></button></td>
-            <td><button type="button" className="btn btn-danger" onClick={() => props.onHandleDelete(props._id)}>Delete</button></td>
+            <td><button type="button" className="btn" onClick={() => props.onHandleDeleteIcon(props._id)}><Bookmark bookmarkState={props.bookmark} /></button></td>
+            <td><button type="button" className="btn btn-danger" onClick={() => props.onHandleDeleteButton(props._id)}>Delete</button></td>
         </tr>
     );
 }
