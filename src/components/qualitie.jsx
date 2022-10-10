@@ -1,8 +1,8 @@
 import React from "react";
 
-const Qualitie = (props) => {
+const Qualitie = ({ color, name }) => {
     return (
-        <span key={props._id} className={"m-1 badge bg-" + props.color}>{props.name}</span>
+        <span className={"m-1 badge bg-" + color}>{name}</span>
     )
 }
 

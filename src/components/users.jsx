@@ -1,10 +1,7 @@
 import React from "react";
 import User from "./user";
 
-const Users = (props) => {
-    const users = props.userList;
-    const onHandleDeleteBtn = props.onHandleDelete;
-    const onHandleBoomarkIcn = props.onHandleBoomark;
+const Users = ({ users, ...rest }) => {
 
     return (
         users.length > 0 &&
@@ -23,12 +20,7 @@ const Users = (props) => {
             <tbody>
                 {
                     users.map(user => (
-                        <User
-                            key={user._id}
-                            {...user}
-                            onHandleDeleteButton={onHandleDeleteBtn}
-                            onHandleDeleteIcon={onHandleBoomarkIcn}
-                        />
+                        <User key={user._id} {...user} {...rest} />
                     ))
                 }
             </tbody>

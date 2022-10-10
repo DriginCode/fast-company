@@ -2,20 +2,20 @@ import React from "react";
 import Qualitie from "./qualitie";
 import Bookmark from "./bookmark";
 
-const User = (props) => {
+const User = ({ _id, name, qualities, profession, completedMeetings, rate, bookmark, onHandleUserDelete, onHandleToggleBoomark }) => {
     return (
         <tr>
-            <td>{props.name}</td>
+            <td>{name}</td>
             <td>
-                {props.qualities.map(qualitie => (
+                {qualities.map(qualitie => (
                     <Qualitie key={qualitie._id} {...qualitie} />
                 ))}
             </td>
-            <td>{props.profession.name}</td>
-            <td>{props.completedMeetings}</td>
-            <td>{props.rate}</td>
-            <td><button type="button" className="btn" onClick={() => props.onHandleDeleteIcon(props._id)}><Bookmark bookmarkState={props.bookmark} /></button></td>
-            <td><button type="button" className="btn btn-danger" onClick={() => props.onHandleDeleteButton(props._id)}>Delete</button></td>
+            <td>{profession.name}</td>
+            <td>{completedMeetings}</td>
+            <td>{rate}</td>
+            <td><Bookmark onClick={() => onHandleToggleBoomark(_id)} bookmarkStatus={bookmark} /></td>
+            <td><button type="button" className="btn btn-danger" onClick={() => onHandleUserDelete(_id)}>Delete</button></td>
         </tr>
     );
 }

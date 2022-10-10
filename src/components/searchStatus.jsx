@@ -1,21 +1,21 @@
 import React from "react";
 
-const SearchStatus = (props) => {
+const SearchStatus = ({ countUsers }) => {
 
-    const renderPhrase = (number) => {
+    const renderPhrase = (countUsers) => {
         const phrase = ['человек тусанёт с тобой сегодня', 'человека тусанут с тобой сегодня', 'Никто с тобой не тусанёт'];
 
-        number = Math.abs(number) % 100;
-        let num = number % 10;
-        if (number > 10 && number < 20) return number + ' ' + phrase[0];
-        if (num > 1 && num < 5) return number + ' ' + phrase[1];
-        if (num === 1) return number + ' ' + phrase[0];
-        if (number === 0) return phrase[2];
-        return number + ' ' + phrase[0];
+        countUsers = Math.abs(countUsers) % 100;
+        let num = countUsers % 10;
+        if (countUsers > 10 && countUsers < 20) return countUsers + ' ' + phrase[0];
+        if (num > 1 && num < 5) return countUsers + ' ' + phrase[1];
+        if (num === 1) return countUsers + ' ' + phrase[0];
+        if (countUsers === 0) return phrase[2];
+        return countUsers + ' ' + phrase[0];
     }
 
     return (
-        <h3><span className={"badge bg-" + (props.number > 0 ? "primary" : "danger")}>{renderPhrase(props.number)}</span></h3>
+        <h3><span className={"badge bg-" + (countUsers > 0 ? "primary" : "danger")}>{renderPhrase(countUsers)}</span></h3>
     )
 }
 

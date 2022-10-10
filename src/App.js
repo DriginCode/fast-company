@@ -6,7 +6,7 @@ import SearchStatus from "./components/searchStatus";
 const App = () => {
     const [users, setUsers] = useState(api.users.fetchAll());
 
-    const handleDelete = (userId) => {
+    const handleUserDelete = (userId) => {
         setUsers(users.filter(user => user._id !== userId));
     }
 
@@ -25,11 +25,11 @@ const App = () => {
         <div className="container">
             <div className="row">
                 <div className="col-12">
-                    <SearchStatus number={users.length} />
+                    <SearchStatus countUsers={users.length} />
                     <Users
-                        userList={users}
-                        onHandleBoomark={handleToggleBookmark}
-                        onHandleDelete={handleDelete}
+                        users={users}
+                        onHandleToggleBoomark={handleToggleBookmark}
+                        onHandleUserDelete={handleUserDelete}
                     />
                 </div>
             </div>

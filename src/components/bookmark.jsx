@@ -1,8 +1,10 @@
 import React from "react";
 
-const Bookmark = (props) => {
+const Bookmark = ({ bookmarkStatus, ...rest }) => {
 
-    return <i className={"bi " + (props.bookmarkState ? "bi-bookmark-plus-fill" : "bi-bookmark")}></i>
+    return (<button type="button" className="btn" {...rest} >
+        <i className={"bi " + (bookmarkStatus ? "bi-bookmark-plus-fill" : "bi-bookmark")}></i>
+    </button>)
 }
 
 export default Bookmark;
