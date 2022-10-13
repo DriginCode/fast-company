@@ -5,10 +5,9 @@ import SearchStatus from "./components/searchStatus";
 
 const App = () => {
     const [users, setUsers] = useState(api.users.fetchAll());
-
     const handleUserDelete = (userId) => {
-        setUsers(users.filter(user => user._id !== userId));
-    }
+        setUsers(users.filter((user) => user._id !== userId));
+    };
 
     const handleToggleBookmark = (id) => {
         const newBookmarkState = users.map((user) => {
@@ -19,7 +18,7 @@ const App = () => {
         });
 
         setUsers(newBookmarkState);
-    }
+    };
 
     return (
         <div className="container">
@@ -34,7 +33,7 @@ const App = () => {
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default App;
