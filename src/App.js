@@ -16,7 +16,6 @@ const App = () => {
 				<Route path="/users/:userId?/" component={Users} />
 				<Redirect to="/" />
 			</Switch>
-			{/* <Users /> */}
 		</main>
 	);
 };
