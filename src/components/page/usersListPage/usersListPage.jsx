@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, use } from "react";
 import api from "../../../api";
 import Pagination from "../../common/pagination";
 import { paginate } from "../../../utils/paginate";
@@ -7,6 +7,7 @@ import GroupList from "../../common/groupList";
 import SearchStatus from "../../ui/searchStatus";
 import UsersTable from "../../ui/usersTable";
 import _ from "lodash";
+import { useUser } from "../../../hooks/useUser";
 
 const UsersListPage = () => {
 	const [currentPage, setCurrentPage] = useState(1);
@@ -16,25 +17,23 @@ const UsersListPage = () => {
 	const [sortBy, setSortBy] = useState({ path: "name", order: "asc" });
 	const pageSize = 8;
 
-	const [users, setUsers] = useState();
-
-	useEffect(() => {
-		api.users.fetchAll().then((data) => setUsers(data));
-	}, []);
+	const { users } = useUser();
+	console.log("UsersListPage users:", users);
 
 	const handleDelete = (userId) => {
-		setUsers(users.filter((user) => user._id !== userId));
+		// setUsers(users.filter((user) => user._id !== userId));
+		console.log("Delete user with ID:", userId);
 	};
 
 	const handleToggleBookMark = (userId) => {
-		setUsers(
-			users.map((user) => {
-				if (user._id === userId) {
-					user.bookmark = !user.bookmark;
-				}
-				return user;
-			})
-		);
+		const newArray = users.map((user) => {
+			if (user._id === userId) {
+				user.bookmark = !user.bookmark;
+			}
+			return user;
+		});
+		// setUsers(newArray);
+		console.log(newArray);
 	};
 
 	useEffect(() => {
@@ -102,7 +101,7 @@ const UsersListPage = () => {
 				<div className="d-flex flex-column">
 					<SearchStatus length={itemsCount} />
 					<input
-						class="form-control me-2"
+						className="form-control me-2"
 						type="search"
 						name="searchQuery"
 						placeholder="Введите запрос"
